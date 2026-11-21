@@ -1,0 +1,12 @@
+bora la, esse aqui como o proprio nome da pasta diz, é pra criar um projeto em lambda, no modelo lambda durable function, com golang, a ideia é criar um sistema simples, de uma loja virtual com alguns itens que a pessoa pode comprar, e a lambda durable functions serve pra controlar o carrinho e depois o pagamento, que pode ser por cartao ou pix, o cliente vai abrir o site basicamente, e no site tem os produto e tal, pode gerar um estoque ficticio de produtos de esporte, bolas de futebol, basquete, voley, varios esportes, coloca varios itens com preço descricao e tudo mais, e o fluxo vai ser:
+cliente acessa site > escolhe produtos > vai adicionando no carrinho > depois vai para checkout > usuario faz login, criamos sempre usuario ficticio unico na base para testes > usuario vai para checkout > pode escolher cartao ou pix > se for pix vai gerar um qrcode com 15 minutos de expiração, e ai da pra validar a expiracao do pix é legal essa parte, e se for cartao, ele coloca la os dados ficticions tipo 1111111111111111, expiracao 01/2040 e cvc 111 e tambem consegue pagar normalemnte > aqui podemos simular um atraso do cartao, pix expirado, e conforme tudo acontece vai dando status no pedido, carrinho etc, se o carrinho expirar tambem pode voltar os produtos e as quantidades como se nao estivessem reservados ou algo assim, pra conseguir controlar o fluxo 
+
+
+
+o carrinho precisa mostrar sempre os dados atualizados, se por exemplo alguma compra for validada, tem q diminuir do estoque, tudo orientado a evento pelo processo da lambda e controle do processo tudo com a lambda durable functions, 
+
+vamos utilizar golang para o backend ja existe o sdk das durable functions para criarmos a aplicacao, o nosso frontend vai ser em vite com react, e vamos opentofu para infraestrutura na aws e deploy dos nossos servicos, o banco que vamos utilizar vai ser o dynamodb, o site pode ser feito deploy no s3 com static host do react, e assim funciona tudo na mesma estrutura conectado.
+
+lembre de fazer auditoria de segurança pra nao expor nenhum segredo no repositorio pois vamos subir isso no github de forma publica, cria um readme completo com a ideia do repositorio pra ficar claro e mostrar q é um teste 
+
+depois iremos fazer deploy na aws e fazemos um pequeno teste simulando usuarios fazendo as operacoes e tudo mais pra validar que tudo funciona do jeito que deveria e no tempo certo das expiracoes

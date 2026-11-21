@@ -1,0 +1,11 @@
+# Copie para terraform.tfvars se quiser sobrescrever o padrão.
+# Não coloque access keys neste arquivo. Credenciais ficam em ~/.aws ou na env.
+
+# aws_profile  = "default"
+aws_region   = "us-east-2"
+project_name = "arena-store"
+environment  = "demo"
+
+# Encurte para testar expiração de PIX/carrinho na AWS sem esperar 15 minutos.
+# cart_ttl_seconds = 120
+# pix_ttl_seconds  = 120

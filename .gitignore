@@ -1,0 +1,46 @@
+# Binaries and Lambda artifacts
+dist/
+*.zip
+bootstrap
+backend/bin/
+
+# Go
+backend/vendor/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OpenTofu / Terraform
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.*
+infra/*.tfvars
+infra/crash.log
+infra/override.tf
+infra/override.tf.json
+infra/*_override.tf
+infra/*_override.tf.json
+
+# Secrets and local env (keep *.example)
+.env
+.env.*
+!.env.example
+*.pem
+credentials
+.aws/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test / coverage
+coverage.out
+*.test
+
+# graphify
+graphify-out/
